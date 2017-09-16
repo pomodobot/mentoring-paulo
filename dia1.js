@@ -20,10 +20,6 @@ var orcamento = [{
 }];
 
 orcamento
-	.filter(function(a){
-		return a.ativo === 1;
-	})
-	.forEach(function(a) {
-	    console.log(a.valor);
-	});
+	.filter(a => a.ativo === true)
+	.forEach(a => console.log(a.valor));
 
