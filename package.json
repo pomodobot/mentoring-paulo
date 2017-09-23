@@ -1,0 +1,22 @@
+{
+  "name": "gerenciador-financeiro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomodobot/mentoring-paulo.git"
+  },
+  "author": "Afonso e Paulo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pomodobot/mentoring-paulo/issues"
+  },
+  "homepage": "https://github.com/pomodobot/mentoring-paulo#readme",
+  "dependencies": {
+    "mongo": "^0.1.0"
+  }
+}
