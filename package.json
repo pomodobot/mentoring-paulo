@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pomodobot/mentoring-paulo#readme",
   "dependencies": {
-    "mongo": "^0.1.0"
+    "express": "^4.15.4",
+    "mongodb": "^2.2.31"
   }
 }
