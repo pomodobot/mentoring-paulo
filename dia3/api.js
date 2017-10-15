@@ -32,6 +32,17 @@ MongoClient.connect(url, function(err, db) {
 	});
 
 	function verifica(req){
+		const keys = Object.keys(req.body);
+		if(keys.indexOf('categoria') === -1 ||
+		   keys.indexOf('mes') === -1 ||
+		   keys.indexOf('valor') === -1) {
+            return {
+                success: false,
+                message: "É preciso ter 3 parâmetros: categoria, mes e valor"
+            }
+        }
+
+
 		if(typeof(req.body.categoria) != "string"){
 			return { 
 				success: false,
