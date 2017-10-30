@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <budget-item
+                v-bind:item="item"
+                v-for="item in budgetItems">
+        </budget-item>
+    </ul>
+
+    <button v-on:click="loadBudgetItems">Chamar</button>
+
+    <img src="{{image}}"/>
+    <button v-on:click="loadImage">Sim ou não</button>
+
+</div>
+
+
+<script type="text/javascript">
+    Vue.component('budget-item', {
+        props: ['item'],
+        template: '<li><b>{{item.categoria}}</b>:{{item.valor}}</li>'
+    });
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            link: 'http://google.com',
+            seen: true,
+            budgetItems: [
+                { id: 0, category: 'Refeição', value: 100 },
+                { id: 1, category: 'Transporte', value: 200 },
+                { id: 2, category: 'Entretenimento', value: 300 }
+            ]
+        },
+        methods: {
+            loadBudgetItems: function () {
+                this.$http.get('/orcamentos').then(bugetItems => {
+                    this.budgetItems = bugetItems.body;
+                });
+            },
+            loadImage: function () {
+                this.$http.get('https://yesno.wtf/api').then(response => {
+                    this.image = response.body.image;
+                });
+            },
+        },
+    });
+</script>
+
+</body>
+</html>
+

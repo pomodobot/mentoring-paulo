@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+
+<div id="app">
+  {{ message }}
+
+<span v-bind:title="message">
+Hover your mouse over me for a few seconds
+to see my dynamically bound title!
+</span>
+
+<a v-bind:href="link">oi</a>
+
+  <span v-if="seen">Now you see me</span>
+
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+
+<todo-item
+  v-for="item in todos"
+  v-bind:todo="item">
+</todo-item>
+
+  <input v-model="message">
+
+  <button v-on:click="reverseMessage">Reverse Message</button>
+
+</div>
+
+
+<script type="text/javascript">
+	Vue.component('todo-item', {
+	   props: ['todo'],
+  		template: '<li><span>{{todo.text}}</span></li>'
+	})
+
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+	    message: 'Hello Vue!',
+	    link: 'http://google.com',
+	    seen: true,
+	    todos: [
+	      { id: 0, text: 'Vegetables' },
+	      { id: 1, text: 'Cheese' },
+	      { id: 2, text: 'Whatever else humans are supposed to eat' }
+    	]
+	  },
+	  methods: {
+		reverseMessage: function () {
+      		this.message = this.message.split('').reverse().join('')
+    	}
+  	  },
+	})
+</script>
+
+</body>
+</html>
+
